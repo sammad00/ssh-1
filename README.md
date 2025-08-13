@@ -23,6 +23,74 @@ This script automates the setup of SSH key-based authentication across multiple 
 
 ##  Usage
 
+
+## 🔑 SSH Key Generation
+
+Before running this script, you need a valid SSH key pair (private + public key).  
+If your public key is in the wrong format, the server will reject it with:
+
+    Permission denied (publickey)
+
+Below are two recommended ways to generate keys.
+
+---
+
+### **Method 1 — Using MobaXterm (Windows)**
+
+> Recommended if you are on Windows and already use MobaXterm for SSH.
+
+1. Open **MobaXterm** → **Tools** → **MobaKeyGen**.
+2. Click **Generate** (default type is RSA, which works fine).
+3. Move your mouse around the blank area until the progress bar completes.
+4. **IMPORTANT FIX for Common Issue**  
+   - You will see the **public key** appear in the large text box at the top.  
+   - **Manually copy this text** and save it into a file (e.g., `id_rsa.pub`).  
+   - **Do NOT** use the auto-downloaded `.pub` file that comes with the private key — it can be in the wrong format and cause authentication errors.
+5. Save your **private key** in a safe location.
+   - If using OpenSSH: you'll have `id_rsa` (private) and `id_rsa.pub` (public).
+   - If using MobaXterm/PuTTY: you'll have `.ppk` (private) and a manually copied OpenSSH-format public key.
+
+
+![MobaXterm Key Generation Screenshot](mobaxterm-keygen.png)
+
+
+
+---
+
+### **Method 2 — Using OpenSSH (Linux/Mac/WSL)**
+
+If you are on Linux, macOS, or Windows with WSL, you can use:
+
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+- Press **Enter** to accept the default file location (`~/.ssh/id_rsa`).
+- Enter a passphrase (optional, adds extra security).
+- Your public key will be saved as `~/.ssh/id_rsa.pub` (correct format for OpenSSH).
+- Your private key will be saved as `~/.ssh/id_rsa`.
+
+---
+
+### ✅ Quick Verification
+
+To check if your public key is in the right format, run:
+
+    cat id_rsa.pub
+
+It should start with:
+
+    ssh-rsa AAAAB3...
+
+---
+
+**Why This Matters:**  
+If the public key is in the wrong format (like PuTTY format), Linux SSH servers will not match it to your private key, resulting in **Permission denied (publickey)** errors.
+
+
+---
+
+Now that you have a valid public/private key pair, you can use one of the two setup options below.
+
+
 ###  Option 1: Fork and Replace Key
 
 1. **Fork this repo**
