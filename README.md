@@ -93,8 +93,12 @@ Now that you have a valid public/private key pair, you can use one of the two se
 
 ###  Option 1: Fork and Replace Key
 
-1. **Fork this repo**
-2. Replace `id_rsa.pub` with your public key
+1. **Fork this repo** into your GitHub account.
+2. In your fork, open the `id_rsa.pub` file and replace its contents with **your public key**.
+   - **If using MobaXterm (Windows)**: Use the manually copied public key from the large text box in MobaKeyGen (Step 4 of Method 1 in  SSH Key Generation).  
+     **Do NOT** use the `.pub` file downloaded alongside your private key — it may be in the wrong format and cause authentication errors.
+   - **If using OpenSSH**: Copy the contents of your `id_rsa.pub` file (usually in `~/.ssh/id_rsa.pub`) into the one in your fork.
+
 3. On your target Linux machine:
 
 ```
