@@ -125,6 +125,10 @@ Provide a path to your .pub key (e.g., /home/user/.ssh/id_rsa.pub)
 
 Or paste your key directly when prompted
 
+
+![SSH Username](username.png)
+
+
 <br><br>
 ## 🧠 Why Two Modes?
 
