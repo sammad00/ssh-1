@@ -119,6 +119,10 @@ curl -s ifconfig.me
 echo ""
 echo "-----------------------------------"
 echo ""
+USERNAME=$(whoami)
+echo "Your Lab Machine's Username is: $USERNAME"
+echo "-----------------------------------"
+echo ""
 
 #10. update system
 echo "-> Starting system package update in background (this may take a moment)..."
