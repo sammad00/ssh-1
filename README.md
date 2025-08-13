@@ -103,6 +103,8 @@ Now that you have a valid public/private key pair, you can use one of the two se
 
 ```
 git clone https://github.com/YourUsername/ssh-key-auto-setup.git
+```
+```
 cd ssh-key-auto-setup
 bash setup_ssh.sh
 ```
